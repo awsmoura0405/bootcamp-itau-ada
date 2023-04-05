@@ -15,7 +15,7 @@ on:
 
 jobs:
   BuildAndDeploy:
-    name: Build frontend app and deploy
+    name: Build frontend
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -24,8 +24,9 @@ jobs:
       - run: docker build -t frontend .
 
   TestDocker:
-    name: Build frontend app and deploy
+    name: Test frontend
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
       - run: ng test
+    needs: [BuildAndDeploy]
