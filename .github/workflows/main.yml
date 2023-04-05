@@ -7,7 +7,6 @@ jobs:
   list_files:
     runs-on: self-hosted
     steps:
-      - uses: actions/bootcamp-itau@v1
       - run: -ls -la
 
   deploy:
