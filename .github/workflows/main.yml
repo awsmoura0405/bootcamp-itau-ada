@@ -8,7 +8,6 @@ jobs:
     runs-on: self-hosted
     steps:
       - run: ls
-      - run: la
 
   deploy:
     runs-on: self-hosted
