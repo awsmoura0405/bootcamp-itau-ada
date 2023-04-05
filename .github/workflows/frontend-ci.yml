@@ -1,16 +1,12 @@
 name: Build frontend app and deploy
 
-defaults:
-  run:
-    working-directory: "frontend/"
-
 on:
-  workflow_dispatch:
+#  workflow_dispatch:
   push:
     branches:
-    - frontend
+      - frontend
     paths:
-    - 'frontend/**'
+      - 'frontend/**'
 
 #env:
 #  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
