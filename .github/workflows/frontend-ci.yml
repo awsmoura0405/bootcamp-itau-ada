@@ -17,14 +17,15 @@ jobs:
   BuildAndDeploy:
     name: Build frontend app and deploy
     runs-on: self-hosted
-
     steps:
       - uses: actions/checkout@v3
+      - run: apt-get update && apt-get -y install npm
+      - run: npm install -g @angular/cli
+      - run: docker build -t frontend .
 
-      - name: builddocker
-        run: apt-get update && apt-get -y install npm
-        run: npm install -g @angular/cli
-        run: docker build -t frontend .
-
-      - name: testdocker
-        run: ng test
+  TestDocker:
+    name: Build frontend app and deploy
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - run: ng test
