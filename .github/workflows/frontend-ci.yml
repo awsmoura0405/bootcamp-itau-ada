@@ -19,9 +19,9 @@ jobs:
     runs-on: self-hosted
     steps:
 #      - uses: actions/checkout@v3
-      - run: apt-get update && apt-get -y install npm
-      - run: npm install -g @angular/cli
-      - run: docker build -t frontend .
+      - run: sudo apt-get update && sudo apt-get -y install npm
+      - run: sudo npm install -g @angular/cli
+      - run: sudo docker build -t frontend .
 
   TestDocker:
     name: Test frontend
