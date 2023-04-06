@@ -29,8 +29,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: build frontend
+    - name: build Backend
       run: |
+          cd backend
           mvn clean test
     needs: [Get_Dependencies]
 
