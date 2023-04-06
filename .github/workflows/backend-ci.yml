@@ -70,7 +70,7 @@ jobs:
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
-          registry: docker.pkg.com
+          registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ secrets.TOKEN_GITHUB }}
       
@@ -80,7 +80,8 @@ jobs:
           context: .
           push: true
           tags: |
-            docker.pkg.com/${{ github.repository }}/octo-image:${{ github.sha }}
-            docker.pkg.com/${{ github.repository }}/octo-image:${{ github.event.release.tag_name }}
+            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.sha }}
+            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.event.release.tag_name }}
+    needs: [Buid_Java]
 
 
