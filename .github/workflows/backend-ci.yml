@@ -69,7 +69,6 @@ jobs:
         run: cd backend
 
       - name: Build and push Docker image
-        run: cd backend
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
@@ -78,5 +77,3 @@ jobs:
             docker.pkg.github.com/${{ github.repository }}/11-jre:${{ github.sha }}
 #            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.event.release.tag_name }}
     needs: [Buid_Java]
-
-
