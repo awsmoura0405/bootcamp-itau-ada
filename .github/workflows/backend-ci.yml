@@ -32,6 +32,7 @@ jobs:
     - name: build frontend
       run: |
           mvn clean test
+    needs: [Get_Dependencies]
 
   Buid_Java:
     name: Build Java Backend
@@ -43,3 +44,4 @@ jobs:
     - name: build frontend
       run: |
           mvn clean package
+    needs: [Test]
