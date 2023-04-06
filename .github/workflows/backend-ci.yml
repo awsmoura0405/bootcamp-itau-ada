@@ -42,37 +42,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: build frontend
+    - name: build backend
       run: |
           cd backend
           mvn clean package
     needs: [Test]
-
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-      - name: Publish package
-        run: mvn --batch-mode deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-
-
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
-
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
 
   push_to_registry:
     name: Push Docker image to GitHub Packages
@@ -101,7 +75,7 @@ jobs:
           context: .
           push: true
           tags: |
-            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.sha }}
+            docker.pkg.github.com/${{ github.repository }}/11-jre:${{ github.sha }}
 #            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.event.release.tag_name }}
     needs: [Buid_Java]
 
