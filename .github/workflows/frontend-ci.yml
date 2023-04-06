@@ -15,8 +15,7 @@ jobs:
     name: Build frontend
     runs-on: self-hosted
     steps:
-    - name: checkout the repository
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     
     - name: build frontend
       run: |
@@ -24,3 +23,4 @@ jobs:
           sudo npm install -g @angular/cli
           cd frontend
           docker build . -t frontend 
+
