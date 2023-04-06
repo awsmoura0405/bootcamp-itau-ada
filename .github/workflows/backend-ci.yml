@@ -44,5 +44,6 @@ jobs:
     
     - name: build frontend
       run: |
+          cd backend
           mvn clean package
     needs: [Test]
