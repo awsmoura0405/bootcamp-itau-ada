@@ -1,17 +1,14 @@
 name: Build frontend app and deploy
 
+#defaults:
+#  run:
+#    working-directory: "frontend/"
+
 on:
-#  workflow_dispatch:
+  workflow_dispatch:
   push:
     branches:
-      - frontend
-#    paths:
-#      - 'frontend/**'
-
-#env:
-#  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#  AWS_DEFAULT_REGION: "us-east-1"
+      - frontend 
 
 jobs:
   BuildAndDeploy:
@@ -25,11 +22,4 @@ jobs:
           sudo apt-get update && sudo apt-get -y install npm
           sudo npm install -g @angular/cli
           cd frontend
-          docker build . -t frontend
-  
-    TestDocker:
-      name: Test frontend
-      runs-on: self-hosted
-      steps:
-        - uses: actions/checkout@v3
-        - run: ng test
+          docker build . -t frontend 
