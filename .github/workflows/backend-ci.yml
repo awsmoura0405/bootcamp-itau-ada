@@ -64,9 +64,6 @@ jobs:
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ secrets.TOKEN_GITHUB }}
-      
-      - name: open folder
-        run: cd backend
 
       - name: Build and push image
         run: |
