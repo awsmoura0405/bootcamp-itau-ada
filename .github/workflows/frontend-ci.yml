@@ -1,3 +1,20 @@
+Importante lembrar que:
+Dentro de cada workflow, os steps de teste e build do Docker deverão ser separados;
+Seus workflows deverão rodar no Runner self-hosted que criamos anteriormente;
+Os workflows obrigatoriamente deverão estar numa pasta chamada .github/workflows;
+Para mandar sua imagem Docker para o GitHub Packages, você deverá gerar um Personal Access Token (PAT), aqui você encontra a documentação;
+Os worklflows deverão ser disparados quanto a branch main for alterada, porém as mudanças deverão via a partir de Pull Requests;
+Os Dockerfile estão dentro da pasta de cada aplicação;
+Observações sobre a app de Frontend:
+Essa app só requer dois passos: rodar os testes e build da imagem Docker:
+# as dependencias necessarias sao o npm e a angular-cli
+$ apt-get update && apt-get -y install npm
+$ npm install -g @angular/cli
+
+# rodar testes
+$ ng test
+
+
 name: Build frontend app and deploy
 
 on:
@@ -14,7 +31,7 @@ on:
 #  AWS_DEFAULT_REGION: "us-east-1"
 
 jobs:
-  BuildAndDeploy:
+  BuildAndTest:
     name: Build frontend app and deploy
     runs-on: self-hosted
 
