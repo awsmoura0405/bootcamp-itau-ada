@@ -68,12 +68,8 @@ jobs:
       - name: open folder
         run: cd backend
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: .
-          push: true
-          tags: |
-            docker.pkg.github.com/${{ github.repository }}/11-jre:${{ github.sha }}
-#            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.event.release.tag_name }}
-    needs: [Buid_Java]
+      - name: Build and push image
+        run: |
+          docker build -t docker.pkg.github.com/awsmoura0405/backend-app:latest .
+          docker push docker.pkg.github.com/awsmoura0405/backend-app:latest
+      needs: [Buid_Java]
