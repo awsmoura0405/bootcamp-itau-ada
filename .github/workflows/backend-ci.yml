@@ -61,12 +61,12 @@ jobs:
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.TOKEN_GITHUB }}
 
       - name: push image
         run: |
-            docker build -t docker.pkg.github.com/awsmoura0405/backend-app:latest .
-            docker push docker.pkg.github.com/awsmoura0405/backend-app:latest
+            docker build -t ghcr.io/awsmoura0405/backend-app:latest .
+            docker push ghcr.io/awsmoura0405/backend-app:latest
       needs: [Buid_Java]
