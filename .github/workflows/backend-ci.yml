@@ -66,5 +66,5 @@ jobs:
           password: ${{ secrets.TOKEN_GITHUB }}
       -name: push image
        run: |
-         docker build -t docker.pkg.github.com/awsmoura0405/backend-app:latest .
-         docker push docker.pkg.github.com/awsmoura0405/backend-app:latest
+           docker build -t docker.pkg.github.com/awsmoura0405/backend-app:latest .
+           docker push docker.pkg.github.com/awsmoura0405/backend-app:latest
