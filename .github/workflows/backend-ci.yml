@@ -1,5 +1,4 @@
 name: Test and Build backend app
-
 defaults:
   run:
     working-directory: "backend"
